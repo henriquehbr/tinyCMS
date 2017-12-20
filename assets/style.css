@@ -1,0 +1,26 @@
+body {
+	padding-top: 120px;
+	font-family: Arial;
+}
+
+.container {
+	width: 500px;
+	margin: 0 auto;
+}
+
+a:link, a:visited {
+	color: slateGray;
+	text-decoration: none;
+	border-bottom: 1px dotted slateGray;
+}
+
+a:hover {
+	color: #444;
+	border-bottom-color: #444;
+}
+
+input[type=text], input[type=password], textarea {
+	-webkit-appearance: none;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
