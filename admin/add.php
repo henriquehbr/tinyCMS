@@ -3,6 +3,7 @@
 session_start();
 
 include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
+include_once('../includes/header-footer.php'); // Cabeçalho e rodapé da página
 
 if (isset($_SESSION['logged_in'])) {
 	if (isset($_POST['title'], $_POST['content'])) {
@@ -26,6 +27,7 @@ if (isset($_SESSION['logged_in'])) {
 	// Mosta a página de escrever posts
 	?>
 
+	<!-- ============================== # PÁGINA DE ESCREVER POSTS # ============================== -->
 	<html>
 	<head>
 		<meta charset="utf-8">
@@ -34,9 +36,9 @@ if (isset($_SESSION['logged_in'])) {
 	</head>
 	<body>
 
-		<!-- ============================== # PÁGINA DE ESCREVER POSTS # ============================== -->
 		<div class="container">
-			<h1><a href="../index.php" id="logo">tinyCMS</a></h1>
+
+			<?php headercms(); ?> <!-- Mostra o cabeçalho -->
 
 			<h4>Escrever artigo</h4>
 
@@ -52,7 +54,9 @@ if (isset($_SESSION['logged_in'])) {
 				<input type="submit" value="Salvar artigo" />
 			</form>
 
-			<a href="index.php">&larr; Voltar</a>
+			<?php footercms(); ?> <!-- Mostra o rodapé -->
+
+			<a style="float: right;" href="index.php">&larr; Voltar</a>
 
 		</div>
 

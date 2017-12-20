@@ -3,6 +3,7 @@
 session_start();
 
 include_once('../includes/connection.php');
+include_once('../includes/header-footer.php');
 
 if (isset($_SESSION['logged_in'])) {
 	// Se estiver logado, mostra a página do admin (index)
@@ -19,7 +20,7 @@ if (isset($_SESSION['logged_in'])) {
 
 		<!-- MENU -->
 		<div class="container">
-			<h1><a href="../index.php" id="logo">tinyCMS</a></h1>
+			<?php headercms(); ?>
 
 			<ol>
 				<li><a href="add.php">Escrever post</a></li>
@@ -27,7 +28,8 @@ if (isset($_SESSION['logged_in'])) {
 				<li><a href="logout.php">Sair</a></li>
 			</ol>
 
-			<a href="../index.php">&larr; Voltar ao inicio</a>
+			<?php footercms(); ?>
+			<a style="float: right;" href="../index.php">&larr; Voltar ao inicio</a>
 
 		</div>
 		<!-- FIM DO MENU -->
@@ -82,7 +84,7 @@ if (isset($_SESSION['logged_in'])) {
 
 		<!-- MENU -->
 		<div class="container">
-			<h1><a href="../index.php" id="logo">CMS</a></h1>
+			<?php headercms(); ?> <!-- Mostra o cabeçalho -->
 
 			<h4>Digite seu login e senha para continuar:</h4>
 
@@ -98,7 +100,8 @@ if (isset($_SESSION['logged_in'])) {
 				<input type="submit" value="Login" />
 			</form>
 
-			<a href="../index.php">&larr; Voltar ao inicio</a>
+			<?php footercms(); ?>
+			<a style="float: right;" href="..">&larr; Voltar ao inicio</a>
 
 		</div>
 		<!-- FIM DO MENU -->

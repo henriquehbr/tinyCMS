@@ -1,7 +1,8 @@
 <?php
 
 include_once('includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('includes/article.php'); // Mostra os posts do banco de dados
+include_once('includes/posts.php'); // Mostra os posts do banco de dados
+include_once('includes/header-footer.php'); // Cabeçalho e rodapé da página
 
 $article = new Article;
 $articles = $article->fetch_all();
@@ -18,12 +19,9 @@ $articles = $article->fetch_all();
 <body>
 	<div class="container">
 
-		<!-- MENU -->
-		<h1><a href="index.php" id="logo">tinyCMS</a></h1>
-		<a href="admin">Página do admin</a>
-		<!-- FIM DO MENU -->
+		<?php headercms(); ?> <!-- Mostra o cabeçalho -->
 
-		<!-- POSTS -->
+		<!-- ########## POSTS ########## -->
 		<ol>
 			<?php foreach ($articles as $article) { ?>
 			<li>
@@ -32,7 +30,10 @@ $articles = $article->fetch_all();
 			</li>
 			<?php } ?>
 		</ol>
-		<!-- FIM DOS POSTS -->
+		<!-- ########## FIM DOS POSTS ########## -->
+
+		<?php footercms(); ?> <!-- Mostra o rodapé -->
+		<a style="float: right;" href="admin">Página do admin</a>
 
 	</div>
 </body>

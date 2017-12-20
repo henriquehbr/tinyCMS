@@ -1,17 +1,19 @@
 body {
-	padding-top: 120px;
 	font-family: Arial;
 }
 
 .container {
 	width: 500px;
 	margin: 0 auto;
+	border: 1px solid #777;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #444;
 }
 
 a:link, a:visited {
 	color: slateGray;
 	text-decoration: none;
-	border-bottom: 1px dotted slateGray;
 }
 
 a:hover {

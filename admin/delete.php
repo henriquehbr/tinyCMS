@@ -3,7 +3,8 @@
 session_start();
 
 include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('../includes/article.php'); // Mostra os posts do banco de dados
+include_once('../includes/posts.php'); // Mostra os posts do banco de dados
+include_once('../includes/header-footer.php'); // Cabeçalho e rodapé da página
 
 $article = new Article;
 
@@ -32,9 +33,9 @@ if (isset($_SESSION['logged_in'])) {
 	</head>
 	<body>
 
-		<!-- MENU -->
 		<div class="container">
-			<h1><a href="../index.php" id="logo">CMS</a></h1>
+
+			<?php headercms(); ?> <!-- Mostra o cabeçalho -->
 
 			<h4>Escolha o artigo a ser deletado:</h4>
 
@@ -48,10 +49,10 @@ if (isset($_SESSION['logged_in'])) {
 				</select>
 			</form>
 
-			<a href="index.php">&larr; Voltar</a>
+			<?php footercms(); ?> <!-- Mostra o rodapé -->
+			<a style="float: right;" href="index.php">&larr; Voltar</a>
 
 		</div>
-		<!-- FIM DO MENU -->
 
 	</body>
 	</html>
