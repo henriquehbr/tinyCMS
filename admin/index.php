@@ -15,6 +15,7 @@ if (isset($_SESSION['logged_in'])) {
 		<meta charset="utf-8">
 		<title>tinyCMS - Admin</title>
 		<link rel="stylesheet" href="../assets/style.css">
+		<script src="../assets/fontawesome-all.min.js"></script>
 	</head>
 	<body>
 
@@ -23,13 +24,13 @@ if (isset($_SESSION['logged_in'])) {
 			<?php headercms(); ?>
 
 			<ol>
-				<li><a href="add.php">Escrever post</a></li>
-				<li><a href="delete.php">Apagar post</a></li>
-				<li><a href="logout.php">Sair</a></li>
+				<li><a href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a></li>
+				<li><a href="delete.php"><i class="fas fa-trash-alt"></i> Apagar post</a></li>
+				<li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
 			</ol>
 
 			<?php footercms(); ?>
-			<a style="float: right;" href="../index.php">&larr; Voltar ao inicio</a>
+			<a style="float: right;" href="../index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 
 		</div>
 		<!-- FIM DO MENU -->
@@ -79,6 +80,7 @@ if (isset($_SESSION['logged_in'])) {
 		<meta charset="utf-8">
 		<title>tinyCMS - Login</title>
 		<link rel="stylesheet" href="../assets/style.css">
+		<script src="../assets/fontawesome-all.min.js"></script>
 	</head>
 	<body>
 
@@ -101,7 +103,7 @@ if (isset($_SESSION['logged_in'])) {
 			</form>
 
 			<?php footercms(); ?>
-			<a style="float: right;" href="..">&larr; Voltar ao inicio</a>
+			<a style="float: right;" href=".."><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 
 		</div>
 		<!-- FIM DO MENU -->

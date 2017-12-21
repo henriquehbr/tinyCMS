@@ -2,7 +2,7 @@
 
 ###### The project is still in early development stage, in case of any bug, please, create a issue on our github repository.
 
-TinyCMS is a stupidly simple content management system, it was developed to be easy to use, robust and as lightweight as possible (less than 500kb) also is powered by a really minimalist and intuitive interface.
+TinyCMS is a stupidly simple content management system, it was developed to be easy to use, robust and as lightweight as possible (less than 1mb) also is powered by a really minimalist and intuitive interface.
 
 ## Installation
 

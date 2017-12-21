@@ -30,6 +30,7 @@ if (isset($_SESSION['logged_in'])) {
 		<meta charset="utf-8">
 		<title>tinyCMS - Deletar post</title>
 		<link rel="stylesheet" href="../assets/style.css">
+		<script src="../assets/fontawesome-all.min.js"></script>
 	</head>
 	<body>
 
@@ -50,7 +51,7 @@ if (isset($_SESSION['logged_in'])) {
 			</form>
 
 			<?php footercms(); ?> <!-- Mostra o rodapé -->
-			<a style="float: right;" href="index.php">&larr; Voltar</a>
+			<a style="float: right;" href="index.php"><i class="fas fa-arrow-left"></i> Voltar</a>
 
 		</div>
 

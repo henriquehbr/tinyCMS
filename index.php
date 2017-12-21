@@ -15,6 +15,7 @@ $articles = $article->fetch_all();
 	<meta charset="utf-8">
 	<title>tinyCMS - Bem vindo!</title>
 	<link rel="stylesheet" href="assets/style.css">
+	<script src="assets/fontawesome-all.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -33,7 +34,7 @@ $articles = $article->fetch_all();
 		<!-- ########## FIM DOS POSTS ########## -->
 
 		<?php footercms(); ?> <!-- Mostra o rodapé -->
-		<a style="float: right;" href="admin">Página do admin</a>
+		<a style="float: right;" href="admin"><i class="fas fa-lock"></i> Página do admin</a>
 
 	</div>
 </body>
