@@ -2,7 +2,7 @@
 
 include_once('includes/connection.php'); // Realiza a conexão ao banco de dados
 include_once('includes/posts.php'); // Mostra os posts do banco de dados
-include_once('includes/header-footer.php'); // Cabeçalho e rodapé da página
+include_once('includes/functions.php'); // Cabeçalho e rodapé da página
 
 $article = new Article;
 $articles = $article->fetch_all();
@@ -15,12 +15,12 @@ $articles = $article->fetch_all();
 	<meta charset="utf-8">
 	<title>tinyCMS - Bem vindo!</title>
 	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="assets/w3.css">
 	<script src="assets/fontawesome-all.min.js"></script>
 </head>
 <body>
-	<div class="container">
 
-		<?php headercms(); ?> <!-- Mostra o cabeçalho -->
+		<?php cms_header(); ?> <!-- Mostra o cabeçalho -->
 
 		<!-- ########## POSTS ########## -->
 		<ol>
@@ -33,9 +33,8 @@ $articles = $article->fetch_all();
 		</ol>
 		<!-- ########## FIM DOS POSTS ########## -->
 
-		<?php footercms(); ?> <!-- Mostra o rodapé -->
+		<?php cms_footer(); ?> <!-- Mostra o rodapé -->
 		<a style="float: right;" href="admin"><i class="fas fa-lock"></i> Página do admin</a>
 
-	</div>
 </body>
 </html>

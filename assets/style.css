@@ -1,6 +1,7 @@
 body {
 	font-family: Arial;
 	background-color: #fafafa;
+	padding: 10px;
 }
 
 ol li {
@@ -21,13 +22,4 @@ input[type=text], input[type=password], textarea {
 	-webkit-appearance: none;
 	padding: 5px;
 	border: 1px solid #ccc;
-}
-
-.container {
-	width: 500px;
-	margin: 0 auto;
-	border: 1px solid #777;
-	padding: 10px;
-	border-radius: 5px;
-	box-shadow: 1px 1px 3px #444;
 }

@@ -3,7 +3,7 @@
 session_start();
 
 include_once('../includes/connection.php');
-include_once('../includes/header-footer.php');
+include_once('../includes/functions.php');
 
 if (isset($_SESSION['logged_in'])) {
 	// Se estiver logado, mostra a página do admin (index)
@@ -15,13 +15,14 @@ if (isset($_SESSION['logged_in'])) {
 		<meta charset="utf-8">
 		<title>tinyCMS - Admin</title>
 		<link rel="stylesheet" href="../assets/style.css">
+		<link rel="stylesheet" href="../assets/w3.css">
 		<script src="../assets/fontawesome-all.min.js"></script>
 	</head>
 	<body>
 
 		<!-- MENU -->
 		<div class="container">
-			<?php headercms(); ?>
+			<?php cms_header(); ?>
 
 			<ol>
 				<li><a href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a></li>
@@ -29,7 +30,7 @@ if (isset($_SESSION['logged_in'])) {
 				<li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
 			</ol>
 
-			<?php footercms(); ?>
+			<?php cms_footer(); ?>
 			<a style="float: right;" href="../index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 
 		</div>
