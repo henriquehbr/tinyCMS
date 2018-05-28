@@ -1,5 +1,4 @@
 <?php
-// DESLOGA DA CONTA DO ADMIN
 
 session_start();
 

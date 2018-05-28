@@ -1,8 +1,7 @@
 <?php
 
-include_once('includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('includes/posts.php'); // Mostra os posts do banco de dados
-include_once('includes/functions.php'); // Cabeçalho e rodapé da página
+include_once('includes/connection.php');
+include_once('includes/posts.php');
 
 $article = new Article;
 $articles = $article->fetch_all();
@@ -14,27 +13,33 @@ $articles = $article->fetch_all();
 <head>
 	<meta charset="utf-8">
 	<title>tinyCMS - Bem vindo!</title>
-	<link rel="stylesheet" href="assets/style.css">
 	<link rel="stylesheet" href="assets/w3.css">
-	<script src="assets/fontawesome-all.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
 </head>
 <body>
 
-		<?php cms_header(); ?> <!-- Mostra o cabeçalho -->
+		<div class="w3-container">
 
-		<!-- ########## POSTS ########## -->
-		<ol>
-			<?php foreach ($articles as $article) { ?>
-			<li>
-				<h3><?php echo $article['article_title']; ?></h3>
-				<p><?php echo $article['article_content']; ?></p>
-			</li>
-			<?php } ?>
-		</ol>
-		<!-- ########## FIM DOS POSTS ########## -->
+			<h1>My Website</h1>
+			<p>The description goes here...</p>
 
-		<?php cms_footer(); ?> <!-- Mostra o rodapé -->
-		<a style="float: right;" href="admin"><i class="fas fa-lock"></i> Página do admin</a>
+			<div class="w3-bar w3-light-grey">
+				<a class="w3-bar-item w3-button" href="admin"><i class="fas fa-lock"></i> Página do admin</a>
+			</div>
+
+			<hr>
+
+			<!-- ########## POSTS ########## -->
+			<ul class="w3-ul w3-card">
+				<?php foreach ($articles as $article) { ?>
+				<li>
+					<h3><?php echo $article['article_title']; ?></h3>
+					<p><?php echo $article['article_content']; ?></p>
+				</li>
+				<?php } ?>
+			</ul>
+			<!-- ########## FIM DOS POSTS ########## -->
+		</div>
 
 </body>
 </html>

@@ -3,11 +3,11 @@
 $servername = "localhost";
 $dbname = "cms";
 $username = "root";
-$password = "toor";
+$password = "";
 
 try {
 	// Tenta realizar uma conexão ao banco de dados com as credenciais abaixo
-	$pdo = new PDO('mysql:host=$servername;dbname=$dbname', '$username', '$password');
+	$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 } catch (PDOException $e) {
 	// Caso não seja possivel realizar uma conexão, é mostrada uma mensagem de erro
 	echo '<link rel="stylesheet" href="../assets/w3.css">';

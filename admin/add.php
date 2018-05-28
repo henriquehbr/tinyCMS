@@ -3,7 +3,6 @@
 session_start();
 
 include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('../includes/functions.php'); // Cabeçalho e rodapé da página
 
 if (isset($_SESSION['logged_in'])) {
 	if (isset($_POST['title'], $_POST['content'])) {
@@ -32,15 +31,26 @@ if (isset($_SESSION['logged_in'])) {
 	<head>
 		<meta charset="utf-8">
 		<title>tinyCMS - Escrever post</title>
-		<link rel="stylesheet" href="../assets/style.css">
 		<link rel="stylesheet" href="../assets/w3.css">
-		<script src="../assets/fontawesome-all.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+		<style>
+			textarea {
+				box-sizing: border-box;
+				width: 100%;
+				resize: none;
+			}
+		</style>
 	</head>
 	<body>
 
-		<div class="container">
+		<div class="w3-container">
 
-			<?php cms_header(); ?> <!-- Mostra o cabeçalho -->
+			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
+			<p>A stupidly simple content management system...</p>
+
+			<div class="w3-bar w3-light-grey">
+				<a class="w3-bar-item w3-button" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
+			</div>
 
 			<h4>Escrever artigo</h4>
 
@@ -51,14 +61,10 @@ if (isset($_SESSION['logged_in'])) {
 			<?php } ?>
 
 			<form action="add.php" method="post" autocomplete="off">
-				<input type="text" name="title" placeholder="Titulo do post" /><br /><br />
-				<textarea rows="15" cols="50" placeholder="Senha" placeholder="Conteúdo do post" name="content"></textarea><br /><br />
-				<input type="submit" value="Salvar artigo" />
+				<input class="w3-input w3-border" type="text" name="title" placeholder="Titulo do post" /><br>
+				<textarea class="w3-input w3-border" rows="10" cols="100" placeholder="Conteúdo do post" name="content"></textarea><br>
+				<input class="w3-button w3-border" type="submit" value="Salvar artigo" />
 			</form>
-
-			<?php cms_footer(); ?> <!-- Mostra o rodapé -->
-
-			<a style="float: right;" href="index.php"><i class="fas fa-arrow-left"></i> Voltar</a>
 
 		</div>
 
