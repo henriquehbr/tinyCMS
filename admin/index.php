@@ -1,5 +1,7 @@
 <?php
 
+##### PAINEL DE CONTROLE DO ADMINISTRADOR #####
+
 session_start();
 
 include_once('../includes/connection.php');
@@ -12,6 +14,7 @@ if (isset($_SESSION['logged_in'])) {
 	<html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>tinyCMS - Admin</title>
 		<link rel="stylesheet" href="../assets/w3.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
@@ -75,6 +78,7 @@ if (isset($_SESSION['logged_in'])) {
 	<html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>tinyCMS - Login</title>
 		<link rel="stylesheet" href="../assets/w3.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">

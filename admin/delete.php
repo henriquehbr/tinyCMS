@@ -1,5 +1,7 @@
 <?php
 
+##### DELETAR POSTS #####
+
 session_start();
 
 include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
@@ -27,6 +29,7 @@ if (isset($_SESSION['logged_in'])) {
 	<html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>tinyCMS - Deletar post</title>
 		<link rel="stylesheet" href="../assets/w3.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
