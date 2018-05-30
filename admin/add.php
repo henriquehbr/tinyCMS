@@ -15,10 +15,11 @@ if (isset($_SESSION['logged_in'])) {
 		if (empty($title) or empty($content)) {
 			$error = 'Preencha todos os campos!';
 		} else {
-			$query = $pdo->prepare('INSERT INTO articles (article_title, article_content) VALUES (?, ?)');
+			$query = $pdo->prepare('INSERT INTO articles (article_title, article_content, article_timestamp) VALUES (?, ?, ?)');
 
 			$query->bindValue(1, $title);
 			$query->bindValue(2, $content);
+			$query->bindValue(3, time());
 
 			$query->execute();
 
@@ -52,7 +53,10 @@ if (isset($_SESSION['logged_in'])) {
 			<p>A stupidly simple content management system...</p>
 
 			<div class="w3-bar w3-light-grey">
-				<a class="w3-bar-item w3-button" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
+				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
+				<a class="w3-bar-item w3-button" href="delete.php"><i class="fas fa-trash-alt"></i> Apagar post</a>
+				<a class="w3-bar-item w3-button" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
+				<a class="w3-bar-item w3-button w3-right" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</div>
 
 			<h4>Escrever artigo</h4>
@@ -66,11 +70,15 @@ if (isset($_SESSION['logged_in'])) {
 			<form action="add.php" method="post" autocomplete="off">
 				<input class="w3-input w3-border" type="text" name="title" placeholder="Titulo do post" /><br>
 				<textarea class="w3-input w3-border" rows="10" cols="100" placeholder="Conteúdo do post" name="content"></textarea><br>
-				<input class="w3-button w3-border" type="submit" value="Salvar artigo" />
+				<button class="w3-button w3-border" type="submit">
+					<i class="fas fa-check"></i> Salvar artigo
+				</button>
 			</form>
 
 		</div>
 
+		<script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+		<script>CKEDITOR.replace("content");</script>
 	</body>
 	</html>
 

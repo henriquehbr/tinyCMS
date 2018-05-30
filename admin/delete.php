@@ -42,13 +42,16 @@ if (isset($_SESSION['logged_in'])) {
 			<p>A stupidly simple content management system...</p>
 
 			<div class="w3-bar w3-light-grey">
-				
+				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
+				<a class="w3-bar-item w3-button" href="delete.php"><i class="fas fa-trash-alt"></i> Apagar post</a>
+				<a class="w3-bar-item w3-button" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
+				<a class="w3-bar-item w3-button w3-right" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</div>
 
-			<h4>Escolha o artigo a ser deletado:</h4>
+			<h4>Selecione o artigo a ser deletado:</h4>
 
-			<form class="w3-bar w3-light-grey" action="delete.php" method="get">
-				<select class="w3-bar-item w3-padding w3-button" onchange="this.form.submit();" name="id">
+			<form action="delete.php" method="get">
+				<select class="w3-button w3-border" onchange="this.form.submit();" name="id">
 					<option value=""># Escolha um artigo a ser deletado #</option>
 					<?php foreach ($articles as $article) { ?>
 						<option value="<?php echo $article['article_id']; ?>">
@@ -56,7 +59,6 @@ if (isset($_SESSION['logged_in'])) {
 						</option>
 					<?php } ?>
 				</select>
-				<a class="w3-bar-item w3-button w3-right" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</form>
 
 		</div>

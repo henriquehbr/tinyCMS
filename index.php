@@ -37,12 +37,15 @@ $articles = $article->fetch_all();
 				<?php foreach ($articles as $article) { ?>
 				<li>
 					<h3><?php echo $article['article_title']; ?></h3>
+					<?php echo date("F j, Y, g:i a", $article['article_timestamp']); ?>
 					<p><?php echo $article['article_content']; ?></p>
 				</li>
 				<?php } ?>
 			</ul>
 			<!-- ########## FIM DOS POSTS ########## -->
 		</div>
+
+		<br>
 
 </body>
 </html>
