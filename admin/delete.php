@@ -5,7 +5,7 @@
 session_start();
 
 include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('../includes/posts.php'); // Mostra os posts do banco de dados
+include_once('../includes/article.php'); // Mostra os posts do banco de dados
 
 $article = new Article;
 

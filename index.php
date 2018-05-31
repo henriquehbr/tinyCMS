@@ -3,7 +3,7 @@
 ##### PÁGINA INICIAL #####
 
 include_once('includes/connection.php');
-include_once('includes/posts.php');
+include_once('includes/article.php');
 
 $article = new Article;
 $articles = $article->fetch_all();
@@ -22,8 +22,7 @@ $articles = $article->fetch_all();
 <body>
 
 		<div class="w3-container">
-
-			<h1>My Website</h1>
+			<a href="/index.php" class="w3-xxlarge">My Website</a>
 			<p>The description goes here...</p>
 
 			<div class="w3-bar w3-light-grey">
@@ -36,9 +35,9 @@ $articles = $article->fetch_all();
 			<ul class="w3-ul w3-card">
 				<?php foreach ($articles as $article) { ?>
 				<li>
-					<h3><?php echo $article['article_title']; ?></h3>
-					<?php echo date("F j, Y, g:i a", $article['article_timestamp']); ?>
-					<p><?php echo $article['article_content']; ?></p>
+					<a href="includes/article_page.php?id=<?php echo $article['article_id']; ?>" class="w3-xlarge"><?php echo $article["article_title"]; ?></a><br>
+					<?php echo date("F j, Y, g:i a", $article['article_timestamp']); ?><br><br>
+					<?php echo $article['article_content']; ?>
 				</li>
 				<?php } ?>
 			</ul>
