@@ -29,6 +29,7 @@ if (isset($_SESSION['logged_in'])) {
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
 				<a class="w3-bar-item w3-button" href="delete.php"><i class="fas fa-trash-alt"></i> Apagar post</a>
+				<a class="w3-bar-item w3-button" href="change_password.php"><i class="fas fa-key"></i> Alterar senha</a>
 				<a class="w3-bar-item w3-button" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
 				<a class="w3-bar-item w3-button w3-right" href="../index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</div>
@@ -50,7 +51,7 @@ if (isset($_SESSION['logged_in'])) {
 		if (empty($username) or empty($password)) {
 			$error = 'Preencha todos os campos!';
 		} else {
-			$query = $pdo->prepare("SELECT * FROM users WHERE user_name = ? AND user_password = ?");
+			$query = $pdo->prepare("SELECT * FROM users WHERE user_name = BINARY ? AND user_password = BINARY ?");
 
 			$query->bindValue(1, $username);
 			$query->bindValue(2, $password);
@@ -102,7 +103,9 @@ if (isset($_SESSION['logged_in'])) {
 			<form class="w3-bar w3-light-grey w3-padding" action="index.php" method="post" autocomplete="off">
 				<input class="w3-bar-item w3-border w3-margin-right" type="text" name="username" placeholder="Usuário" />
 				<input class="w3-bar-item w3-border w3-margin-right" type="password" name="password" placeholder="Senha" />
-				<input class="w3-bar-item w3-button w3-teal w3-border" type="submit" value="Login" />
+				<button class="w3-bar-item w3-button w3-teal w3-border" type="submit">
+					<i class="fas fa-sign-in-alt"></i> Login
+				</button>
 				<a class="w3-bar-item w3-button w3-right" href="/index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</form>
 

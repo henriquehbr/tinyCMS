@@ -37,13 +37,6 @@ if (isset($_SESSION['logged_in'])) {
 		<title>tinyCMS - Escrever post</title>
 		<link rel="stylesheet" href="../assets/w3.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-		<style>
-			textarea {
-				box-sizing: border-box;
-				width: 100%;
-				resize: none;
-			}
-		</style>
 	</head>
 	<body>
 
@@ -55,8 +48,9 @@ if (isset($_SESSION['logged_in'])) {
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
 				<a class="w3-bar-item w3-button" href="delete.php"><i class="fas fa-trash-alt"></i> Apagar post</a>
+				<a class="w3-bar-item w3-button" href="change_password.php"><i class="fas fa-key"></i> Alterar senha</a>
 				<a class="w3-bar-item w3-button" href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
-				<a class="w3-bar-item w3-button w3-right" href="index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
+				<a class="w3-bar-item w3-button w3-right" href="../index.php"><i class="fas fa-arrow-left"></i> Voltar ao inicio</a>
 			</div>
 
 			<h4>Escrever artigo</h4>

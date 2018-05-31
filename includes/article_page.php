@@ -1,5 +1,7 @@
 <?php
 
+##### PÁGINA DINÂMICA DOS ARTIGOS #####
+
 include("connection.php");
 include("article.php");
 
