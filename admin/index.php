@@ -4,7 +4,7 @@
 
 session_start();
 
-include_once('../includes/connection.php');
+include_once('../includes/conectar_bd.php');
 
 if (isset($_SESSION['logged_in'])) {
 	// Se estiver logado, mostra a página do admin (index)
@@ -23,8 +23,8 @@ if (isset($_SESSION['logged_in'])) {
 
 		<div class="w3-container">
 
-			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<a class="w3-xxlarge" href="/tinyCMS/">tinyCMS</a>
+			<p>Um sistema de gerenciamento de conteúdo extremamente simples...</p>
 
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
@@ -44,23 +44,23 @@ if (isset($_SESSION['logged_in'])) {
 } else {
 	// Senão, mostra a página de login
 	if (isset($_POST['username'], $_POST['password'])) {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$usuario_nome = $_POST['username'];
+		$usuario_senha = $_POST['password'];
 
 		// Caso deixe todos os campos em branco, uma mensagem de erro é mostrada
-		if (empty($username) or empty($password)) {
-			$error = 'Preencha todos os campos!';
+		if (empty($usuario_nome) or empty($usuario_senha)) {
+			$erro = 'Preencha todos os campos!';
 		} else {
-			$query = $pdo->prepare("SELECT * FROM users WHERE user_name = BINARY ? AND user_password = BINARY ?");
+			$db = $conectar->prepare("SELECT * FROM usuarios WHERE usuario_nome = BINARY ? AND usuario_senha = BINARY ?");
 
-			$query->bindValue(1, $username);
-			$query->bindValue(2, $password);
+			$db->bindValue(1, $usuario_nome);
+			$db->bindValue(2, $usuario_senha);
 
-			$query->execute();
+			$db->execute();
 
-			$num = $query->rowCount();
+			$colunas = $db->rowCount();
 
-			if ($num == 1) {
+			if ($colunas == 1) {
 				// Usuário digitou login e senha corretos
 				$_SESSION['logged_in'] = true;
 				
@@ -68,7 +68,7 @@ if (isset($_SESSION['logged_in'])) {
 				exit();
 			} else {
 				// Usuário digitou login e senha incorretos
-				$error = 'Nome/senha estão incorretos!';	
+				$erro = 'Nome/senha estão incorretos!';	
 			}
 		}
 	}
@@ -88,15 +88,15 @@ if (isset($_SESSION['logged_in'])) {
 
 		<div class="w3-container">
 
-			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<a class="w3-xxlarge" href="/tinyCMS/">tinyCMS</a>
+			<p>Um sistema de gerenciamento de conteúdo extremamente simples...</p>
 
 			<hr>
 
 			<h4>Digite seu login e senha para continuar:</h4>
 
-			<?php if (isset($error)) { ?>
-				<small style="color:#aa0000;"><?php echo $error; ?></small>
+			<?php if (isset($erro)) { ?>
+				<small style="color:#aa0000;"><?php echo $erro; ?></small>
 				<br /><br />
 			<?php } ?>
 

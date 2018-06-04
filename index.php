@@ -2,11 +2,11 @@
 
 ##### PÁGINA INICIAL #####
 
-include_once('includes/connection.php');
-include_once('includes/article.php');
+include_once('includes/conectar_bd.php');
+include_once('includes/artigo.php');
 
-$article = new Article;
-$articles = $article->fetch_all();
+$artigo = new Artigo;
+$artigos = $artigo->obter_todos();
 
 ?>
 
@@ -22,22 +22,22 @@ $articles = $article->fetch_all();
 <body>
 
 		<div class="w3-container">
-			<a href="/index.php" class="w3-xxlarge">My Website</a>
+			<a href="/tinyCMS/" class="w3-xxlarge">My Website</a>
 			<p>The description goes here...</p>
 
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="admin"><i class="fas fa-lock"></i> Página do admin</a>
 			</div>
 
-			<hr>
+			<br>
 
 			<!-- ########## POSTS ########## -->
 			<ul class="w3-ul w3-card">
-				<?php foreach ($articles as $article) { ?>
+				<?php foreach ($artigos as $artigo) { ?>
 				<li>
-					<a href="includes/article_page.php?id=<?php echo $article['article_id']; ?>" class="w3-xlarge"><?php echo $article["article_title"]; ?></a><br>
-					<?php echo date("F j, Y, g:i a", $article['article_timestamp']); ?><br><br>
-					<?php echo $article['article_content']; ?>
+					<a href="includes/artigo_pagina.php?id=<?php echo $artigo['artigo_id']; ?>" class="w3-xlarge"><?php echo $artigo["artigo_titulo"]; ?></a><br>
+					<?php echo date("F j, Y, g:i a", $artigo['artigo_data']); ?><br><br>
+					<?php echo $artigo['artigo_conteudo']; ?>
 				</li>
 				<?php } ?>
 			</ul>

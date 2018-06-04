@@ -4,7 +4,7 @@
 
 session_start();
 
-include_once("../includes/connection.php");
+include_once("../includes/conectar_bd.php");
 
 if (isset($_SESSION["logged_in"])) {
 	if (isset($_POST['senha_atual'], $_POST['nova_senha'])) {
@@ -13,25 +13,25 @@ if (isset($_SESSION["logged_in"])) {
 
 		// Se o usuário deixar algum campo em branco, essa mensagem será mostrada no formulário
 		if (empty($senha_atual) or empty($nova_senha)) {
-			$error = 'Preencha todos os campos!';
+			$erro = 'Preencha todos os campos!';
 		} else {
-			$query = $pdo->prepare("SELECT * FROM users WHERE user_password = ?");
-			$query->bindValue(1, $senha_atual);
-			$query->execute();
+			$db = $conectar->prepare("SELECT * FROM usuarios WHERE usuario_senha = BINARY ?");
+			$db->bindValue(1, $senha_atual);
+			$db->execute();
 
-			$num = $query->rowCount();
+			$num = $db->rowCount();
 
 			if ($num == 1) {
 				// Usuário digitou a senha correta
-				$query = $pdo->prepare("UPDATE users SET user_password = ? WHERE user_name = 'admin'");
-				$query->bindValue(1, $nova_senha);
-				$query->execute();
+				$db = $conectar->prepare("UPDATE usuarios SET usuario_senha = ? WHERE usuario_nome = 'admin'");
+				$db->bindValue(1, $nova_senha);
+				$db->execute();
 				
 				header('Location: index.php');
 				exit();
 			} else {
 				// Usuário digitou a senha incorreta
-				$error = 'Senha atual incorreta!';	
+				$erro = 'Senha atual incorreta!';	
 			}
 		}
 	}
@@ -49,8 +49,8 @@ if (isset($_SESSION["logged_in"])) {
 
 		<div class="w3-container">
 
-			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<a class="w3-xxlarge" href="/tinyCMS/">tinyCMS</a>
+			<p>Um sistema de gerenciamento de conteúdo extremamente simples...</p>
 
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>

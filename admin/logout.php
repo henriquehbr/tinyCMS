@@ -1,6 +1,6 @@
 <?php
 
-##### DESLOGA DO PAINEL DE CONTROLE #####
+##### DESLOGA DA PÁGINA DO ADMIN #####
 
 session_start();
 

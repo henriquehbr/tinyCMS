@@ -4,24 +4,24 @@
 
 session_start();
 
-include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
-include_once('../includes/article.php'); // Mostra os posts do banco de dados
+include_once('../includes/conectar_bd.php'); // Realiza a conexão ao banco de dados
+include_once('../includes/artigo.php'); // Mostra os posts do banco de dados
 
-$article = new Article;
+$artigo = new Artigo;
 
 if (isset($_SESSION['logged_in'])) {
 	// Mostra a página de deletar posts
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 
-		$query = $pdo->prepare('DELETE FROM articles WHERE article_id = ?');
-		$query->bindValue(1, $id);
-		$query->execute();
+		$db = $conectar->prepare('DELETE FROM artigos WHERE artigo_id = ?');
+		$db->bindValue(1, $id);
+		$db->execute();
 
 		header('Location: delete.php');
 	}
 
-	$articles = $article->fetch_all();
+	$artigos = $artigo->obter_todos();
 
 	?>
 
@@ -38,8 +38,8 @@ if (isset($_SESSION['logged_in'])) {
 
 		<div class="w3-container">
 
-			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<a class="w3-xxlarge" href="/tinyCMS/">tinyCMS</a>
+			<p>Um sistema de gerenciamento de conteúdo extremamente simples...</p>
 
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
@@ -54,9 +54,9 @@ if (isset($_SESSION['logged_in'])) {
 			<form action="delete.php" method="get">
 				<select class="w3-button w3-border" onchange="this.form.submit();" name="id">
 					<option value=""># Escolha um artigo a ser deletado #</option>
-					<?php foreach ($articles as $article) { ?>
-						<option value="<?php echo $article['article_id']; ?>">
-							<?php echo $article['article_title']; ?>
+					<?php foreach ($artigos as $artigo) { ?>
+						<option value="<?php echo $artigo['artigo_id']; ?>">
+							<?php echo $artigo['artigo_titulo']; ?>
 						</option>
 					<?php } ?>
 				</select>

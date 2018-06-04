@@ -1,6 +1,6 @@
 <?php
 
-##### REALIZA UMA CONEXÃO AO BANCO DE DADOS (MYSQL) #####
+##### REALIZA UMA CONEXÃO AO BANCO DE DADOS #####
 
 $servername = "localhost";
 $dbname = "cms";
@@ -9,7 +9,29 @@ $password = "";
 
 try {
 	// Tenta realizar uma conexão ao banco de dados com as credenciais abaixo
-	$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	$conectar = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+	// Declara a tabela de artigos
+	$tabela_artigos = "CREATE TABLE artigos (
+		artigo_id INT AUTO_INCREMENT PRIMARY KEY,
+		artigo_titulo VARCHAR(255) NOT NULL,
+		artigo_conteudo TEXT NOT NULL,
+		artigo_data INT(11)
+	)";
+
+	// Declara a tabela de usuários
+	$tabela_usuarios = "CREATE TABLE usuarios (
+		usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+		usuario_nome VARCHAR(255) NOT NULL,
+		usuario_senha VARCHAR(255) NOT NULL
+	)";
+
+	// Cria a tabela de artigos no banco de dados
+	$conectar->exec($tabela_artigos);
+
+	// Cria a tabela de usuários no banco de dados
+	$conectar->exec($tabela_usuarios);
+
 } catch (PDOException $e) {
 	// Caso não seja possivel realizar uma conexão, é mostrada uma mensagem de erro
 	?>
@@ -26,7 +48,7 @@ try {
 
 		<div class="w3-container">
 			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<p>Um sistema de gerenciamento de conteúdo absurdamente simples...</p>
 
 			<div class="w3-panel w3-red w3-card">
 				<h3><i class="fas fa-exclamation-triangle"></i> Não foi possivel conectar ao banco de dados!</h3>

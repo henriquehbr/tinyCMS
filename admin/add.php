@@ -4,24 +4,24 @@
 
 session_start();
 
-include_once('../includes/connection.php'); // Realiza a conexão ao banco de dados
+include_once('../includes/conectar_bd.php'); // Realiza a conexão ao banco de dados
 
 if (isset($_SESSION['logged_in'])) {
 	if (isset($_POST['title'], $_POST['content'])) {
-		$title = $_POST['title'];
-		$content = $_POST['content'];
+		$titulo = $_POST['title'];
+		$conteudo = $_POST['content'];
 
 		// Se o usuário deixar algum campo em branco, essa mensagem será mostrada no formulário
-		if (empty($title) or empty($content)) {
-			$error = 'Preencha todos os campos!';
+		if (empty($titulo) or empty($conteudo)) {
+			$erro = 'Preencha todos os campos!';
 		} else {
-			$query = $pdo->prepare('INSERT INTO articles (article_title, article_content, article_timestamp) VALUES (?, ?, ?)');
+			$db = $conectar->prepare('INSERT INTO artigos (artigo_titulo, artigo_conteudo, artigo_data) VALUES (?, ?, ?)');
 
-			$query->bindValue(1, $title);
-			$query->bindValue(2, $content);
-			$query->bindValue(3, time());
+			$db->bindValue(1, $titulo);
+			$db->bindValue(2, $conteudo);
+			$db->bindValue(3, time());
 
-			$query->execute();
+			$db->execute();
 
 			header('Location: index.php');
 		}
@@ -42,8 +42,8 @@ if (isset($_SESSION['logged_in'])) {
 
 		<div class="w3-container">
 
-			<a class="w3-xxlarge" href="/index.php">tinyCMS</a>
-			<p>A stupidly simple content management system...</p>
+			<a class="w3-xxlarge" href="/tinyCMS/">tinyCMS</a>
+			<p>Um sistema de gerenciamento de conteúdo extremamente simples...</p>
 
 			<div class="w3-bar w3-light-grey">
 				<a class="w3-bar-item w3-button" href="add.php"><i class="fas fa-pencil-alt"></i> Escrever post</a>
@@ -56,8 +56,8 @@ if (isset($_SESSION['logged_in'])) {
 			<h4>Escrever artigo</h4>
 
 			<!-- Essa é uma mensagem de erro, caso algo dê errado -->
-			<?php if (isset($error)) { ?>
-				<small style="color:#aa0000;"><?php echo $error; ?></small>
+			<?php if (isset($erro)) { ?>
+				<small style="color:#aa0000;"><?php echo $erro; ?></small>
 				<br /><br />
 			<?php } ?>
 
